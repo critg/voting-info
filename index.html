@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>JQVMap - USA Map</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+    <link href="./css/jqvmap.css" media="screen" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <!-- Example Map Above  -->
+        <script src="./js/jquery.vmap.js"></script>
+        <script src="./js/jquery.vmap.usa.js" charset="utf-8"></script>
+         
+        <script>
+        $(document).ready(function(){
+            jQuery('#vmap').vectorMap({
+                map: 'usa_en',
+                backgroundColor: null,
+                color: '#2980b9',
+                enableZoom: false,
+                showTooltip: true,
+                selectedColor: null,
+                hoverColor: '#59C0E9',
+                colors: {
+                    
+                },
+                onRegionClick: function(event, code, region){
+                    event.preventDefault();
+                    $("a").attr("href", "https://www.nonprofitvote.org/states/"+region);
+                    $(".modal#vote-info #region").text(region);
+                    $('.modal#vote-info').modal();
+                    //return false;
+                }
+            });
+        });
+        
+        </script>
+           </head>
+           <body>
+                <div class="vmap-container">
+                    <div id="vmap" style="width: 800px; height: 600px;"></div>
+                </div>
+
+                <div class="modal" id="vote-info">
+                    <hr>
+                    <a href="">Click here for information on voting in <span id="region"></span>!</a>
+                    <hr>
+                </div>
+    </body>
+    </html>
